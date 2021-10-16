@@ -34,6 +34,19 @@ Run the App in the Android Emulator in Android Studio:
 The Android emulator should start after the build is finished. Use the 'Build' tab at the bottom of Android Studio to see the build progress.
 Use LogCat to see the messages between the Android Emulator and Android Studio
 
+- The emulator should present a signo on screen asking for a user and email. Put in a test use email and password.
+
+Now open the Emulators UI by navigating to http://localhost:4000 in your web browser. Then click on the Authentication tab and you should see the account you just created:
+
+Step 6: Write Data to Firestore
+
+Now we will paste in some code from the codelab. For each of the code changes highlight the code in the codelab an paste it into the appropriate place in android Studio. the first change is in MainActivity.java, replace the 
+code in the onAddItemsClicked() method with the code from the codelab.
+Run the app again and click on the Add Random Items button in the overflow menu of the Android Emulator.
+Now go back to the firestore emulators in the browser (http://localhost:4000) and click on Overview then Firestore Emulator. You should see the collection of restaurants added to Firestore.
+
+This data is 100% local to your machine. In fact, your real project doesn't even contain a Firestore database yet! This means it's safe to experiment with modifying and deleting this data without consequence.
+
 
 ################ CODELAB DOCUMENTATION ################
 
