@@ -47,6 +47,9 @@ Now go back to the firestore emulators in the browser (http://localhost:4000) an
 
 This data is 100% local to your machine. In fact, your real project doesn't even contain a Firestore database yet! This means it's safe to experiment with modifying and deleting this data without consequence.
 
+Branch: Step7-Display Data from Firestore
+
+
 
 ################ CODELAB DOCUMENTATION ################
 

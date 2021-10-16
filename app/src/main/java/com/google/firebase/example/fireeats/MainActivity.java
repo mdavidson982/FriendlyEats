@@ -101,6 +101,14 @@ public class MainActivity extends AppCompatActivity implements
 
         // Filter Dialog
         mFilterDialog = new FilterDialogFragment();
+
+        // Code added from Step 7 Display data from Firestore
+        mFirestore = FirebaseUtil.getFirestore();
+
+        // Get the 50 highest rated restaurants
+        mQuery = mFirestore.collection("restaurants")
+                .orderBy("avgRating", Query.Direction.DESCENDING)
+                .limit(LIMIT);
     }
 
     private void initRecyclerView() {
@@ -174,11 +182,40 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    // Add the code from Step 8 of the codelab for the onFilters() method.
+    // I was not getting the list of restaurants until I added this
 
     @Override
     public void onFilter(Filters filters) {
-        // TODO(developer): Construct new query
-        showTodoToast();
+        // Construct query basic query
+        Query query = mFirestore.collection("restaurants");
+
+        // Category (equality filter)
+        if (filters.hasCategory()) {
+            query = query.whereEqualTo("category", filters.getCategory());
+        }
+
+        // City (equality filter)
+        if (filters.hasCity()) {
+            query = query.whereEqualTo("city", filters.getCity());
+        }
+
+        // Price (equality filter)
+        if (filters.hasPrice()) {
+            query = query.whereEqualTo("price", filters.getPrice());
+        }
+
+        // Sort by (orderBy with direction)
+        if (filters.hasSortBy()) {
+            query = query.orderBy(filters.getSortBy(), filters.getSortDirection());
+        }
+
+        // Limit items
+        query = query.limit(LIMIT);
+
+        // Update the query
+        mQuery = query;
+        mAdapter.setQuery(query);
 
         // Set header
         mCurrentSearchView.setText(Html.fromHtml(filters.getSearchDescription(this)));
