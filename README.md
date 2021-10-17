@@ -49,6 +49,33 @@ This data is 100% local to your machine. In fact, your real project doesn't even
 
 Branch: Step7-Display Data from Firestore
 
+In this section, you'll learn how to retrieve data from Cloud Firestore and display it in your app. The two key steps are creating a query and adding a snapshot listener. This listener will be notified of all existing data that matches the query and will receive updates in real time.
+
+Step 8: Sort and Filter Data
+Edit the onFilters() method in MainActivity.java. Add the code from the codelab. Run the app and You should now be able to filter the list.
+
+Step 8: Organize data in subcollections
+This step implements the ratings fragment in the app.
+
+Ratings for each restaurant are saved in the 'ratings' subcollection.
+Adding a Rating to the proper subcollection only requires calling .add(), but we also need to update the Restaurant object's average rating and number of ratings to reflect the new data. If we use separate operations to make these two changes there are a number of race conditions that could result in stale or incorrect data.
+
+Step 9: Sort and Filter data
+In Android Studio open the RestaurantDetailActivity.java and add the code from Step 9 of the codelab. Run the app again and you should be able to enter a rating.
+
+Step 10: Deploy indexes
+Indexes are separate files in a database that 'point' to a collection. The fields in the indexes contain a subset of fields from the master record and the key(id field) from the document in the collection. The purpose of an index is to speed up sorting throiugh a set of documents in a collection when we know in advance that an end user would want to access a subset of documents based on a particular field, such as the type of food served in a restauraunt.
+
+The firestore.indexes.json file in the project contains the index schema for the restaurant app. Open a new terminal in Android Studio (remember you need to keep the terminal running the emulators) enter the command:
+firebase deploy --only firestore:indexes
+
+You should see a bunch of messages followed by:  Deploy complete!
+
+Step 11: Write data in a transaction
+
+
+
+
 
 
 ################ CODELAB DOCUMENTATION ################

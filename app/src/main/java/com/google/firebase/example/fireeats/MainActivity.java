@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements
             mAdapter.stopListening();
         }
     }
-
+// Step 6 Write Data to Firestore
     private void onAddItemsClicked() {
         // Get a reference to the restaurants collection
         CollectionReference restaurants = mFirestore.collection("restaurants");
