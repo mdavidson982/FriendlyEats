@@ -15,6 +15,7 @@
  */
  package com.google.firebase.example.fireeats;
 
+ 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
